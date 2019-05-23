@@ -32,7 +32,7 @@ export class RelationComponent implements OnInit {
             id: element.id,
             areaCode: element.areaCode,
             areaName: element.areaName,
-            contacter: element.contacter,
+            stType: element.stType,
             stlc: element.stlc
           })
         });
@@ -49,11 +49,14 @@ export class RelationComponent implements OnInit {
             value: element.customerName
           })
         });
+
+        this.customer = this.customerList[0].key;
+        this.getAll();
       }
     })
   }
-  bindCustomerRelation() {
-  }
+  // bindCustomerRelation() {
+  // }
   getAll() {
     if (this.customer === '-1') {
       this.addMsg('danger', '请选择客户!');
@@ -107,6 +110,29 @@ export class RelationComponent implements OnInit {
         }
       }
     )
+  }
+  convertType(type) {
+    let typeName = '';
+    if (type) {
+      switch (type) {
+        case '0001':
+          typeName = '1';
+          break;
+        case '0002':
+          typeName = '2';
+          break;
+        case '0004':
+          typeName = '3';
+          break;
+        case '0019':
+          typeName = '4';
+          break;
+        case '003b':
+          typeName = '5';
+          break;
+      }
+    }
+    return typeName;
   }
   private addMsg(type, msg) {
     this.alertsDismiss = [];
