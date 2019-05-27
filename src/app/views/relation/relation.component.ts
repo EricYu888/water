@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RelationService } from './../../shared/services/relation.service';
 
+
 @Component({
   selector: 'app-relation',
   templateUrl: './relation.component.html',
@@ -15,10 +16,12 @@ export class RelationComponent implements OnInit {
   allCheck = false;
   loading = false;
   alertsDismiss: any = [];
-  constructor(public service: RelationService) { }
+  constructor(public service: RelationService) {
+
+  }
 
   ngOnInit() {
-    this.bindSiteInfo();
+    // this.bindSiteInfo();
     this.bindCustomerInfo();
   }
   bindSiteInfo() {
@@ -36,6 +39,7 @@ export class RelationComponent implements OnInit {
             stlc: element.stlc
           })
         });
+        this.getAll();
       }
     })
   }
@@ -51,7 +55,7 @@ export class RelationComponent implements OnInit {
         });
 
         this.customer = this.customerList[0].key;
-        this.getAll();
+        this.bindSiteInfo();
       }
     })
   }
@@ -102,6 +106,12 @@ export class RelationComponent implements OnInit {
         this.relationList.push(ele.id)
       }
     })
+    if (this.relationList.length === 0) {
+      this.addMsg('danger', '请为当前客户至少选择一个站点！')
+      return;
+    }
+
+
     this.service.updataRelation({ 'customer_id': this.customer, 'siteIdArr': this.relationList }).then(
       res => {
         console.log(res)
@@ -111,29 +121,29 @@ export class RelationComponent implements OnInit {
       }
     )
   }
-  convertType(type) {
-    let typeName = '';
-    if (type) {
-      switch (type) {
-        case '0001':
-          typeName = '1';
-          break;
-        case '0002':
-          typeName = '2';
-          break;
-        case '0004':
-          typeName = '3';
-          break;
-        case '0019':
-          typeName = '4';
-          break;
-        case '003b':
-          typeName = '5';
-          break;
-      }
-    }
-    return typeName;
-  }
+  // convertType(type) {
+  //   let typeName = '';
+  //   if (type) {
+  //     switch (type) {
+  //       case '0001':
+  //         typeName = '1';
+  //         break;
+  //       case '0002':
+  //         typeName = '2';
+  //         break;
+  //       case '0004':
+  //         typeName = '3';
+  //         break;
+  //       case '0019':
+  //         typeName = '4';
+  //         break;
+  //       case '003b':
+  //         typeName = '5';
+  //         break;
+  //     }
+  //   }
+  //   return typeName;
+  // }
   private addMsg(type, msg) {
     this.alertsDismiss = [];
     this.alertsDismiss.push({

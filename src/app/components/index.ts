@@ -1,4 +1,4 @@
-// export * from './app-alert';
+export * from './app-alert';
 export * from './app-breadcrumbs';
 export * from './app-footer';
 export * from './app-header';
@@ -13,7 +13,7 @@ export * from './app-validator';
 export * from './app-loading';
 export * from './app-search';
 export * from './app-listener'
- 
+
 
 
 

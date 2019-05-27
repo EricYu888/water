@@ -20,6 +20,7 @@ const APP_CONTAINERS = [
 
 //Import components
 import {
+
   AppBreadcrumbsComponent,
   AppFooterComponent,
   AppHeaderComponent,
@@ -30,6 +31,7 @@ import {
   AppSidebarMinimizerComponent,
   APP_SIDEBAR_NAV,
   AppModalComponent,
+  AppAlertComponent,
   AppLoadingComponent,
   // AppListenerComponent
 } from './components';
@@ -45,6 +47,7 @@ const APP_COMPONENTS = [
   AppSidebarMinimizerComponent,
   APP_SIDEBAR_NAV,
   AppModalComponent,
+  AppAlertComponent,
   AppLoadingComponent,
   // AppListenerComponent
 ]

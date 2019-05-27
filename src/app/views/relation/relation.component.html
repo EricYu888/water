@@ -25,7 +25,6 @@
                                     <input type="checkbox" [(ngModel)]="allCheck" (change)="checkChange(null)" />
                                 </th>
                                 <th>站点名称</th>
-                                <th>站点类型</th>
                                 <th>地址</th>
                             </tr>
                         </thead>
@@ -41,7 +40,6 @@
                                     <input type="checkbox" [(ngModel)]="item.checked" (change)="checkChange(item)" />
                                 </td>
                                 <td>{{item.areaName}}</td>
-                                <td>{{convertType(item.stType)}}</td>
                                 <td>{{item.stlc}}</td>
                             </tr>
                         </tbody>

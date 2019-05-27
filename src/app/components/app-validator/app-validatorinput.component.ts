@@ -4,7 +4,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 @Component({
   selector: 'app-validator-input',
   templateUrl: 'app-validatorinput.component.html',
-  providers:[{
+  providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => AppValidatorInputComponent),
     multi: true
@@ -15,7 +15,7 @@ export class AppValidatorInputComponent implements OnInit, ControlValueAccessor 
   @Input() test: boolean;
   @Input() msg: string;
   @Input() labelname: string;
-  @Input() tagName?:string;
+  @Input() tagName?: string;
   @Input() iconClass?: string;
   @Input() helpStr?: string;
   @Input() appendStr?: string;
@@ -52,19 +52,19 @@ export class AppValidatorInputComponent implements OnInit, ControlValueAccessor 
   constructor(private cd: ChangeDetectorRef) { }
 
 
-  set value(v:any){
-    if(v!==this._value){
-        this._value=v;
-        this.propagateChange(this._value)
+  set value(v: any) {
+    if (v !== this._value) {
+      this._value = v;
+      this.propagateChange(this._value)
     }
-  } 
+  }
 
-  get value(){
-      return this._value;
+  get value() {
+    return this._value;
   }
 
   writeValue(val: any): void {
-    if(val){
+    if (val) {
       this._value = val;
       this.cd.markForCheck();
     }
